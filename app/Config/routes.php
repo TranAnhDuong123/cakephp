@@ -28,6 +28,10 @@
 	Router::connect('/', array('controller' => 'pages', 'action' => 'display', 'home'));
 
 	Router::connect('/user-index', array('controller' => 'users', 'action' => 'index'));
+
+	Router::connect('/login', array('controller' => 'users', 'action' => 'login', 'method' => 'POST'));
+	Router::connect('/info', array('controller' => 'users', 'action' => 'info', 'method' => 'GET'));
+	Router::connect('/logout', array('controller' => 'users', 'action' => 'logout', 'method' => 'GET'));
 /**
  * ...and connect the rest of 'Pages' controller's URLs.
  */

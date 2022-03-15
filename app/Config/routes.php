@@ -32,6 +32,9 @@
 	Router::connect('/login', array('controller' => 'users', 'action' => 'login', 'method' => 'POST'));
 	Router::connect('/info', array('controller' => 'users', 'action' => 'info', 'method' => 'GET'));
 	Router::connect('/logout', array('controller' => 'users', 'action' => 'logout', 'method' => 'GET'));
+
+	Router::connect('/index-book', array('controller' => 'books', 'action' => 'index'));
+	// Router::connect('/action', array('controller' => 'books', 'action' => 'index'));
 /**
  * ...and connect the rest of 'Pages' controller's URLs.
  */

@@ -9,7 +9,7 @@ class UsersController extends AppController{
         $this->set("data",$data);
     }
 
-    function login(){
+    public function login(){
         $error="";
         if(isset($_POST['ok'])){
             $username = $_POST['username'];
@@ -23,7 +23,7 @@ class UsersController extends AppController{
         }    
         $this->set("error",$error);
     }
-    function info(){
+    public function info(){
         if($this->Session->check("session")){
            $username = $this->Session->read('session');
            $this->set("name", $username);
@@ -32,7 +32,7 @@ class UsersController extends AppController{
         }
     }
        
-    function logout(){
+    public function logout(){
         $this->Session->delete('session'); 
         $this->redirect("login"); 
     }

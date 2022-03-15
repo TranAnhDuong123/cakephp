@@ -15,16 +15,16 @@ class UsersController extends AppController{
             $username = $_POST['username'];
             $password = md5($_POST['password']);
             if($this->User->checkLogin($username,$password)){
-                $this->Session->write("session",$username); //ghi session
-                $this->redirect("info");//đăng nhập thành công chuyển trang thông tin
+                $this->Session->write("session",$username); 
+                $this->redirect("info");
             }else{
-                
+                $error = "Tên đăng nhập và mật khẩu không đúng";
             }
         }    
         $this->set("error",$error);
     }
     function info(){
-        if($this->Session->check("session")){//kiểm tra có session hay không
+        if($this->Session->check("session")){
            $username = $this->Session->read('session');
            $this->set("name", $username);
         }else{
@@ -33,7 +33,7 @@ class UsersController extends AppController{
     }
        
     function logout(){
-        $this->Session->delete('session'); //xóa session
-        $this->redirect("login"); //chuyển trang login
+        $this->Session->delete('session'); 
+        $this->redirect("login"); 
     }
 }

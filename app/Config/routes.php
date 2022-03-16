@@ -37,6 +37,10 @@
 
 	Router::connect('/index-book', array('controller' => 'books', 'action' => 'index'));
 	Router::connect('/view-book', array('controller' => 'books', 'action' => 'view'));
+	Router::connect('/add-book', array('controller' => 'books', 'action' => 'addBook', 'method' => 'POST'));
+	Router::connect('/edit-book/:id', array('controller' => 'books', 'action' => 'editBook', 'method' => 'POST'));
+	Router::connect('/del-book/:id', array('controller' => 'books', 'action' => 'delBook', 'method' => 'POST'));
+	//Router::connect('/edit-book/:id', ['controller' => 'books', 'action' => 'editBook', '[method]' => ['POST']], ['pass' => ['id'], 'id' => '[0-9]+']);
 
 	Router::connect('/vidu1-valid', array('controller' => 'valids', 'action' => 'vidu1'));
 	Router::connect('/vidu4-valid', array('controller' => 'valids', 'action' => 'vidu4'));

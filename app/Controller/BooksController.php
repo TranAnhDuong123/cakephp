@@ -42,4 +42,47 @@ class BooksController extends AppController{
         }
         $this->redirect($url, null, true);//dùng để chuyển hướng sang action view
     }
+
+    public function addBook(){
+        if(!empty($this->data)){
+            $this->Book->set($this->data);
+            if($this->Book->validateBook()){
+                $this->Book->save($this->data);
+                $this->redirect("/index-book");
+            }
+        }
+        else{
+            $this->render();
+        }
+    }
+
+    public function editBook($id){
+        if(empty($this->data)){
+            $this->data = $this->Book->read(null, $id);
+        }
+        else{
+            $this->Book->set($this->data);
+            if($this->Book->validateBook()){
+                $this->Book->save($this->data);
+                $this->redirect("/index-book");
+            }
+        }
+    }
+
+    public function delBook($id){
+        if(isset($id) && is_numeric($id)){
+            $data = $this->Book->read(null, $id);
+            if(!empty($data)){
+                $this->Book->delete($id);
+                $this->Session->setFlash("Username da duoc xoa voi id = ".$id);
+            }
+            else{
+                $this->Session->setFlash("Username khong ton tai voi id = ".$id);
+            }
+        }
+        else{
+            $this->Session->setFlash("Username khong ton tai");
+        }
+        $this->redirect("/books");
+    }
 }

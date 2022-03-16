@@ -64,4 +64,47 @@ class UsersController extends AppController{
     public function logout(){
         $this->redirect($this->Auth->logout());
     }
+
+    function admin_edit($id){
+        if (!$id && empty($this->data)) {
+            $this->Session->setFlash('User này không phù hợp');
+            $this->redirect("/admin/users");
+        }
+        if(empty($this->data)) {
+            $this->data = $this->User->read(null, $id);
+        }else{
+            $this->User->set($this->data);
+            if($this->User->validateUser()){
+                $this->User->save($this->data);
+                $this->Session->setFlash("Cập nhật user thành công");
+                $this->redirect("/admin/users"); 
+            }
+        }
+    }
+    function admin_add() {
+        if(!empty($this->data)){
+            $this->User->set($this->data);
+            if($this->User->validateUser()){
+                $this->User->save($this->data);
+                $this->Session->setFlash("Thêm user thành công !");
+                $this->redirect("/admin/users");
+            }
+        }else{
+            $this->render();
+        }
+    }
+    function admin_delete($user_id){
+        if(isset($user_id) && is_numeric($user_id)){
+            $data = $this->User->read(null,$user_id);
+            if(!empty($data)){
+                $this->User->delete($user_id);
+                $this->Session->setFlash("Username đã được xóa với với id=".$user_id);
+            }else{
+                $this->Session->setFlash("Username không tồn tại với id=".$user_id);
+            }
+        }else{
+            $this->Session->setFlash("Username không tồn tại");
+        }
+        $this->redirect("/admin/users");
+    }
 }

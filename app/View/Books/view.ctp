@@ -7,19 +7,15 @@
     <title>Document</title>
 </head>
 <body>
-    <?php echo $this->Form->create('Book', array('action' => 'search')); ?>
-
+    <?php echo $this->Form->create('Book',array('action'=>'search'));?>
     <?php
         echo $this->Form->input('title');
         echo $this->Form->input('description');
         echo $this->Form->submit('Search');
     ?>
-
-    <?php echo $this->Form->end(); ?>
-
+    <?php echo $this->Form->end();?>
     <?php $this->Paginator->options(array('url' => $this->passedArgs)); ?>
-
-    <--Hien thi du lieu sau khi tim kiem-->
+    <!--Hiển thị dữ liệu sau khi tìm kiếm-->
     <?php if(!empty($posts)){?>
     <table>
         <tr>
@@ -38,9 +34,9 @@
     ?>
     </table>
     <?php
-        echo $this->Paginator->prev('« Previous ', null, null, array('class' => 'disabled'));
-        echo " | ".$this->Paginator->numbers()." | ";
-        echo $this->Paginator->next(' Next »', null, null, array('class' => 'disabled'));
+    echo $this->Paginator->prev('« Previous ', null, null, array('class' => 'disabled'));
+    echo " | ".$this->Paginator->numbers()." | ";
+    echo $this->Paginator->next(' Next »', null, null, array('class' => 'disabled'));
     } ?>
 </body>
 </html>

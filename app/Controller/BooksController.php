@@ -13,37 +13,33 @@ class BooksController extends AppController{
         $this->set("data",$data);
     }
 
-    public function view(){
+    function view(){
         $conditions = array();
         $data = array();
         if(!empty($this->passedArgs)){
-            if(isset($this->passedArgs['Book.title'])){
+            if(isset($this->passedArgs['Book.title'])) {//kiểm tra xem có tồn tại title hay không
                 $title = $this->passedArgs['Book.title'];
-                $conditions[] = array('Book.title like' => "%$title%");
-                $data['Book']['title'] = $title;
+                $conditions[] = array( 'Book.title LIKE' => "%$title%", );//điều kiện SQL
+                $data['Book']['title'] = $title;//cho giá trị nhập vào mảng data
             }
-            if(isset($this->passedArgs['Book.description'])){
+            if(isset($this->passedArgs['Book.description'])) {
                 $description = $this->passedArgs['Book.description'];
-                $conditions[] = array("OR" => array('Book.description like' => "%$description%"));
+                $conditions[] = array( "OR" => array( 'Book.description LIKE' => "%$description%" ) );
                 $data['Book']['description'] = $description;
             }
-            $this->paginate = array(
-                'linit' => 2,
-                'order' => array('id' => 'desc')
-            );
-            $this->data = $data ;
+            $this->paginate= array( 'limit' => 2, 'order' => array('id' => 'desc'), );
+            $this->data = $data;//Giữ lại giá trị nhập vào sau khi submit
             $post = $this->paginate("Book",$conditions);
             $this->set("posts",$post);
         }
-    }
-
-    public function search(){
+     }
+    function search() {
         $url['action'] = 'view';
-        foreach($this->data as $key=>$value){
-            foreach($value as $key2=>$value2){
-                $url[$key.'.'.$key2] = $value2;
+        foreach ($this->data as $key=>$value){
+            foreach ($value as $key2=>$value2){
+                $url[$key.'.'.$key2]=$value2;
             }
         }
-        $this->redirect($url, null, true);
+        $this->redirect($url, null, true);//dùng để chuyển hướng sang action view
     }
 }

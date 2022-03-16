@@ -34,7 +34,12 @@
 	Router::connect('/logout', array('controller' => 'users', 'action' => 'logout', 'method' => 'GET'));
 
 	Router::connect('/index-book', array('controller' => 'books', 'action' => 'index'));
-	// Router::connect('/action', array('controller' => 'books', 'action' => 'index'));
+	Router::connect('/view-book', array('controller' => 'books', 'action' => 'view'));
+
+	Router::connect('/vidu1-valid', array('controller' => 'valids', 'action' => 'vidu1'));
+	Router::connect('/vidu4-valid', array('controller' => 'valids', 'action' => 'vidu4'));
+
+	Router::connect('/test-component', array('controler' => 'testcomponents', 'action' => 'test1'));
 /**
  * ...and connect the rest of 'Pages' controller's URLs.
  */

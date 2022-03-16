@@ -33,6 +33,8 @@
 	Router::connect('/info', array('controller' => 'users', 'action' => 'info', 'method' => 'GET'));
 	Router::connect('/logout', array('controller' => 'users', 'action' => 'logout', 'method' => 'GET'));
 
+	Router::connect('/admin-login', array('controller' => 'users', 'action' => 'admin_login', 'method' => 'POST'));
+
 	Router::connect('/index-book', array('controller' => 'books', 'action' => 'index'));
 	Router::connect('/view-book', array('controller' => 'books', 'action' => 'view'));
 

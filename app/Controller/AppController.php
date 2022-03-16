@@ -31,5 +31,21 @@ App::uses('Controller', 'Controller');
  * @link		https://book.cakephp.org/2.0/en/controllers.html#the-app-controller
  */
 class AppController extends Controller {
-    public $components = array('Data');
+    // public $components = array(
+    //     'Auth'=>array(
+    //         'userModel' => 'User',
+    //         'fields' => array('username' => 'username', 'password' => 'password'),
+    //         'loginAction' => array('admin'=>false, 'controller'=>'users', 'action'=>'login'),
+    //         'loginRedirect' => array('admin'=>true, 'controller'=>'users', 'action'=>'index'),
+    //         'authError' => 'Không thể truy cập',
+    //         'authorize' => array('Controller'),
+    //     )
+    // );
+    // function beforeFilter(){
+    //     Security::setHash("md5");//mã hóa password là md5
+    //     $this->set('current_user', $this->Auth->user());//sau khi đăng nhập thành công biến current_user là thông tin user đăng nhập
+    // }
+    // function isAuthorized(){
+    //     return true;
+    // }
 }
